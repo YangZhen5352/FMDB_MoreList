@@ -1,0 +1,22 @@
+//
+//  PrefixHeader.pch
+//  FMDB_MoreListTest
+//
+//  Created by 杨振 on 16/5/13.
+//  Copyright © 2016年 yangzhen5352. All rights reserved.
+//
+
+#ifndef PrefixHeader_pch
+#define PrefixHeader_pch
+
+#import "YZPerson.h"
+#import "YZCompany.h"
+#import "YZDBTools.h"
+
+#import "ASINetworkQueue.h"
+#import "ASIFormDataRequest.h"
+#import "JSONKit.h"
+#import "SVProgressHUD.h"
+#import "UIColor+HexColor.h"
+
+#endif /* PrefixHeader_pch */
