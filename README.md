@@ -1,29 +1,6 @@
 # FMDB_MoreListTest-
 对数据库中的数据进行：增删改查，操作。并且：给数据表绑定触发器，监听数据的，增加／修改／删除操作。
-
 [db executeUpdate:@"create table IF NOT EXISTS SYSTEM_SYNC_LOG(                                                                           PK_VAL    VARCHAR(50)        not null,                                                      T_NAME    VARCHAR(50)    not null,                                                    ACTION    VARCHAR(10)    not null,                                                 CREATE_DATE    TIMESTAMP   DEFAULT CURRENT_TIMESTAMP,                                  primary key (PK_VAL, T_NAME)                                                                                    );                                                                                   create unique index SYSTEM_SYNC_LOG_PK on SYSTEM_SYNC_LOG (  PK_VAL ASC, T_NAME  ASC );"];
-//
-////        // 触发器
-        NSString *sql1 = @"CREATE TRIGGER IF NOT EXISTS [T_Person_INSERT] AFTER INSERT ON [T_Person] BEGIN INSERT INTO SYSTEM_SYNC_LOG VALUES(NEW.personId,'T_Person','C',CURRENT_TIMESTAMP); END;";
-//
-        NSString *sql2 = @"CREATE TRIGGER IF NOT EXISTS [T_Person_DELETE] AFTER DELETE ON [T_Person] BEGIN INSERT INTO SYSTEM_SYNC_LOG VALUES(NEW.personId,'T_Person','D',CURRENT_TIMESTAMP); END;";
-//
-        NSString *sql3 = @"CREATE TRIGGER IF NOT EXISTS [T_Person_UPDATE] AFTER UPDATE ON [T_Person] BEGIN INSERT INTO SYSTEM_SYNC_LOG VALUES(NEW.personId,'T_Person','U',CURRENT_TIMESTAMP); END;";
-//
-//        NSString *sql4 = @"CREATE TRIGGER IF NOT EXISTS [T_Company_INSERT] AFTER INSERT ON [T_Company] BEGIN INSERT INTO SYSTEM_SYNC_LOG VALUES(NEW.companyId,'T_Company','C',CURRENT_TIMESTAMP); END;";
-//        NSString *sql5 = @"CREATE TRIGGER IF NOT EXISTS [T_Company_DELETE] AFTER DELETE ON [T_Company] BEGIN INSERT INTO SYSTEM_SYNC_LOG VALUES(NEW.companyId,'T_Company','D',CURRENT_TIMESTAMP); END;";
-//        
-//        NSString *sql6 = @"CREATE TRIGGER IF NOT EXISTS [T_Company_UPDATE] AFTER UPDATE ON [T_Company] BEGIN INSERT INTO SYSTEM_SYNC_LOG VALUES(NEW.companyId,'T_Company','U',CURRENT_TIMESTAMP); END;";
-//        
-        NSArray *arrLists = [NSArray arrayWithObjects:sql1, sql2, sql3,  nil];
-        
-        for (NSString *sql in arrLists) {
-            [db executeUpdate:sql];
-        }
-        
-        NSLog(@"创建数据表完成");
-    }];
-}
 
 // 查询所有的系统日志
 - (NSMutableArray *)searchAllSYSTEM_SYNC_LOG
