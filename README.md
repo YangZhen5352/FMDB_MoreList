@@ -1,6 +1,14 @@
 # FMDB_MoreListTest-
 对数据库中的数据进行：增删改查，操作。并且：给数据表绑定触发器，监听数据的，增加／修改／删除操作。
-[db executeUpdate:@"create table IF NOT EXISTS SYSTEM_SYNC_LOG(                                                                           PK_VAL    VARCHAR(50)        not null,                                                      T_NAME    VARCHAR(50)    not null,                                                    ACTION    VARCHAR(10)    not null,                                                 CREATE_DATE    TIMESTAMP   DEFAULT CURRENT_TIMESTAMP,                                  primary key (PK_VAL, T_NAME)                                                                                    );                                                                                   create unique index SYSTEM_SYNC_LOG_PK on SYSTEM_SYNC_LOG (  PK_VAL ASC, T_NAME  ASC );"];
+
+// 创建日志数据表
+[db executeUpdate:@"create table IF NOT EXISTS SYSTEM_SYNC_LOG( 
+PK_VAL    VARCHAR(50)        not null,   
+T_NAME    VARCHAR(50)    not null,                                
+ACTION    VARCHAR(10)    not null,                                     
+CREATE_DATE    TIMESTAMP   DEFAULT CURRENT_TIMESTAMP,                    
+primary key (PK_VAL, T_NAME));       
+create unique index SYSTEM_SYNC_LOG_PK on SYSTEM_SYNC_LOG (  PK_VAL ASC, T_NAME  ASC );"];
 
 // 查询所有的系统日志
 - (NSMutableArray *)searchAllSYSTEM_SYNC_LOG
